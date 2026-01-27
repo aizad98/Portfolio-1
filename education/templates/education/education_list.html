@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row mb-5">
+        <div class="col-12">
+            <h6 class="text-uppercase" style="color: #e87a4b;">04 — QUALIFICATIONS</h6>
+            <h2 class="display-5 fw-bold text-white">Academic Journey</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            {% if qualifications %}
+                {% for edu in qualifications %}
+                <div class="mb-5 p-4 border-start border-secondary" style="background: rgba(255,255,255,0.03); border-left-width: 3px !important; border-left-color: #e87a4b !important;">
+                    <span class="text-secondary small fw-bold">{{ edu.start_year }} — {{ edu.end_year }}</span>
+                    <h3 class="text-white mt-2">{{ edu.degree }}</h3>
+                    <h5 class="text-secondary">{{ edu.institute }}</h5>
+                    <p class="mt-3 text-secondary">{{ edu.description }}</p>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p class="alert alert-dark text-white">Academic data coming soon. Please add via Admin panel.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <h6 class="text-uppercase" style="color: #e87a4b;">02 — SKILLS</h6>
+    <h2 class="display-5 fw-bold text-white mb-4">Technical Expertise</h2>
+    <div class="row g-4 mb-5">
+        {% for skill in skills %}
+            {% if skill.category == 'tech' %}
+            <div class="col-md-4">
+                <div class="p-3 border border-secondary rounded bg-dark">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="fw-bold text-white">{{ skill.name }}</span>
+                        <span class="text-secondary">{{ skill.proficiency }}%</span>
+                    </div>
+                    <div class="progress" style="height: 6px; background-color: #333;">
+                        <div class="progress-bar" style="width: {{ skill.proficiency }}%; background-color: #e87a4b;"></div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <h6 class="text-uppercase" style="color: #e87a4b;">03 — ATTRIBUTES</h6>
+    <h2 class="display-5 fw-bold text-white mb-4">Professional Skills</h2>
+    <div class="d-flex flex-wrap gap-3">
+        {% for skill in skills %}
+            {% if skill.category == 'prof' %}
+            <div class="px-4 py-2 rounded-pill border border-secondary text-white"
+                 style="background: rgba(232, 122, 75, 0.1); border: 1px solid #e87a4b !important;">
+                {{ skill.name }}
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

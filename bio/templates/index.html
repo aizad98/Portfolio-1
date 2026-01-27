@@ -1,0 +1,68 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .about-wrapper {
+        padding: 60px 0;
+        color: white; /* Ensures text is visible on dark background */
+    }
+
+    .profile-img-container img {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        border-radius: 8px;
+        border: 1px solid #444;
+    }
+
+    .section-label {
+        color: #e87a4b;
+        font-family: 'Inter', sans-serif;
+        font-weight: bold;
+        font-size: 40px;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+
+    }
+        .bio-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        line-height: 1.2;
+    }
+
+ .bio-description {
+        color: var(--text-dim);
+        font-size: 1.5rem;
+        white-space: pre-line; /* Keeps formatting from Django Admin */
+    }
+
+
+</style>
+
+<div class="about-wrapper">
+    <div class="container">
+        <div class="row custom-row align-items-center ">
+            {% if bio %}
+                <div class="col-md-5 mb-4 mb-md-4">
+                    <div class="section-label">01 — ABOUT</div>
+                    <div class="profile-img-container">
+                        <img src="{{ bio.profile_picture.url }}" alt="{{ bio.name }}">
+                    </div>
+                </div>
+
+                <div class="col-md-7 "style="padding:0 4rem;">
+                    <h1 class="bio-title"><span style="  color: #e87a4b;">{{ bio.name }}</span></h1>
+                    <h3 class="text-light">" {{ bio.job_title }} "</h3>
+                    <p class="bio-description mt-4">{{ bio.description }}</p>
+                </div>
+            {% else %}
+                <div class="col-12 text-center">
+                    <p class="alert alert-warning">No data found. Please add a Bio entry in the Admin Panel.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

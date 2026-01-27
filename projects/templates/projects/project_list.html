@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <h6 class="text-uppercase" style="color: #e87a4b;">06 — PORTFOLIO</h6>
+    <h2 class="display-5 fw-bold text-white mb-5">Featured Projects</h2>
+
+    <div class="row g-4">
+        {% if projects %}
+            {% for project in projects %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 bg-dark border-secondary text-white shadow-sm">
+                    <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ project.title }}</h4>
+                        <p class="card-text text-secondary ">{{ project.description }}</p>
+                        <div class="mt-3">
+                            <span class=" x-small fw-bold" style="color:#e87a4b">TECH STACK:</span>
+                            <p class="text-white mb-0">{{ project.stack }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p class="text-muted">No projects added yet.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

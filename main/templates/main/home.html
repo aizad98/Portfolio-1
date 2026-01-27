@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .hero-container {
+        height: 90vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+         background: radial-gradient(circle at center,#E5CDC0 10%,  #F9F9F9 50%,  #D3E7C8 100%);
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        letter-spacing: 4px;
+        color: #e87a4b;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+
+    .hero-name {
+        font-size: clamp(4rem, 15vw, 10rem);
+        font-weight: 800;
+        line-height: 0.8;
+        color: #e87a4b;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+    }
+
+
+
+    .divider {
+    width: 360px;
+    margin: 20px auto;
+    border: 0;
+    border-top: 1px solid black;
+}
+    .hero-description {
+        color: #777;
+        margin: 1rem 4rem;
+        font-size: 1.2rem;
+        font-family: 'Instrument Serif', serif;
+        font-style: normal; /* Matches the "look" of the image */
+    }
+</style>
+
+<div class="hero-container">
+    {% if hero %}
+        <p class="hero-subtitle">{{ hero.main_title }}</p>
+        <hr class="divider">
+        <h1 class="hero-name">{{ hero.greeting}}  </h1>
+        <p class="hero-description">
+            {{ hero.sub_text|linebreaksbr }}
+        </p>
+    {% else %}
+                  <p class="text-muted">No text  added yet.</p>
+
+    {% endif %}
+</div>
+{% endblock %}
