@@ -2,7 +2,6 @@
 
 ## **The README.md Template**
 
-```markdown
 # 🚀 Django-Modular-Portfolio 
 
 A professional, high-performance, and fully customizable personal portfolio built with **Django**. This project features a unique **modular architecture**, using separate Django apps for every section of the site to ensure maximum scalability and clean code.
